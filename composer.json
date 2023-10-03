@@ -6,10 +6,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "defstudio/telegraph": "^1.38",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/breeze": "^1.24",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
+        "laravel/telescope": "^4.16",
         "laravel/tinker": "^2.8"
     },
     "require-dev": {
