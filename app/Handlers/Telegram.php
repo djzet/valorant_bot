@@ -41,8 +41,6 @@ class Telegram extends WebhookHandler
 /help - Список команд
 /agents - Список агентов
 /maps - Список карт
-/rand_agent - Рандомный агент # /rand_agent 1 2 3
-/rand_map - Рандомная карта # /rand_map 1 2 3
 ')->send();
     }
 
@@ -52,6 +50,7 @@ class Telegram extends WebhookHandler
         $this->chat->html(view('valorant.maps', ['maps' => $maps]))->send();
 
     }
+
     public function agents()
     {
         $agents = $this->agents->getAgents()->all();
@@ -61,29 +60,37 @@ class Telegram extends WebhookHandler
 
     public function rand_agent($text)
     {
-
         preg_match_all('/\d+/', $text, $matches);
-        $numbers = $matches;
-        $number_rand = array_rand($numbers[0]);
-        $agent_rand = $numbers[0][$number_rand];
-        $agents = $this->agents->getAgents()->all();
-        foreach ($agents as $agent) {
-            if ($agent->id == $agent_rand) {
-                $this->chat->html(view('valorant.agent_rand', ['agent' => $agent->name]))->send();
+        if (empty($matches[0])) {
+            $this->chat->message('Повторите попытку')->send();
+        } else {
+            $numbers = $matches;
+            $number_rand = array_rand($numbers[0]);
+            $agent_rand = $numbers[0][$number_rand];
+            $agents = $this->agents->getAgents()->all();
+            foreach ($agents as $agent) {
+                if ($agent->id == $agent_rand) {
+                    $this->chat->html(view('valorant.agent_rand', ['agent' => $agent->name]))->send();
+                }
             }
         }
     }
+
+
     public function rand_map($text)
     {
-
         preg_match_all('/\d+/', $text, $matches);
-        $numbers = $matches;
-        $number_rand = array_rand($numbers[0]);
-        $map_rand = $numbers[0][$number_rand];
-        $mapss = $this->maps->getMaps()->all();
-        foreach ($mapss as $maps) {
-            if ($maps->id == $map_rand) {
-                $this->chat->html(view('valorant.map_rand', ['maps' => $maps->name]))->send();
+        if (empty($matches[0])) {
+            $this->chat->message('Повторите попытку')->send();
+        } else {
+            $numbers = $matches;
+            $number_rand = array_rand($numbers[0]);
+            $map_rand = $numbers[0][$number_rand];
+            $mapss = $this->maps->getMaps()->all();
+            foreach ($mapss as $maps) {
+                if ($maps->id == $map_rand) {
+                    $this->chat->html(view('valorant.map_rand', ['maps' => $maps->name]))->send();
+                }
             }
         }
     }

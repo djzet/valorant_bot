@@ -27,7 +27,5 @@ Artisan::command('command', function () {
         'help' => 'Список команд',
         'agents' => 'Список агентов',
         'maps' => 'Список карт',
-        'rand_agent' => 'Рандомный агент',
-        'rand_map' => 'Рандомная карта',
     ])->send();
 });
