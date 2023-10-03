@@ -31,7 +31,7 @@ class Telegram extends WebhookHandler
         $this->chat->message('<b>Добро пожаловать в телеграм бот "Valorant"!</b>
 Если ты не знаешь за кого сегодня поиграть
 то этот бот тебе поможет!
-Для польшей информации наберите команду /help')->send();
+Для большей информации наберите команду /help')->send();
     }
 
     public function help()
