@@ -4,14 +4,7 @@ namespace App\Handlers;
 
 use App\Models\Agents;
 use App\Models\Maps;
-use DefStudio\Telegraph\DTO\InlineQuery;
-use DefStudio\Telegraph\Facades\Telegraph;
 use DefStudio\Telegraph\Handlers\WebhookHandler;
-use DefStudio\Telegraph\Keyboard\Button;
-use DefStudio\Telegraph\Keyboard\Keyboard;
-use DefStudio\Telegraph\Keyboard\ReplyButton;
-use DefStudio\Telegraph\Keyboard\ReplyKeyboard;
-use DefStudio\Telegraph\Models\TelegraphChat;
 use Illuminate\Support\Stringable;
 
 class Telegram extends WebhookHandler
